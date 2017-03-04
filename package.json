@@ -1,14 +1,17 @@
 {
   "dependencies": {
+    "cylon": "^1.3.0",
+    "cylon-ble": "^0.10.1",
+    "cylon-sphero-ble": "^0.11.0",
     "t-motion-detector": "^0.2.7"
   },
   "devDependencies": {
     "chai": "*",
     "mocha": "*"
   },
-  "description": "A library for controlling the Sphero BB8 via extending t-motion-detector.",
+  "description": "A library for controlling the Sphero BB8 via extending t-motion-detector and cylon packages.",
   "name": "t-motion-detector-bb8",
   "main": "main",
   "readmeFilename": "README.md",
-  "version": "0.1.1"
+  "version": "0.1.2"
 }
