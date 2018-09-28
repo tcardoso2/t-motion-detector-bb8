@@ -15,6 +15,7 @@ var keypress = require("keypress");
 var orb = sphero(process.env.PORT);
 
 orb.connect(listen);
+
 var d = 0;
 var v = 60;
 function handle(ch, key) {
@@ -69,14 +70,22 @@ function handle(ch, key) {
     console.log(`Speed is now ${v}`);
   }
 
-  if (key.name === "d") {
-    if(d > 0) { d = d-10; }
+  if (key.name === "a") {
+    if(d > 0) {
+      d = d-10;
+    } else {
+      d = 350;
+    }
     roll(d);
     console.log(`Direction is now ${d}`);
   }
 
-  if (key.name === "a") {
-    if(d < 200) { d = d+10; }
+  if (key.name === "d") {
+    if(d < 360) {
+      d = d+10;
+    } else {
+      d = 10;
+    }
     roll(d);
     console.log(`Direction is now ${d}`);
   }
@@ -106,6 +115,16 @@ function handle(ch, key) {
 }
 
 function listen() {
+  orb.on("collision", function(data) {
+    console.log("collision detected");
+    console.log("  data:", data);
+
+    orb.color("red");
+    setTimeout(function() {
+      orb.color("white");
+    }, 1000);
+  });
+
   keypress(process.stdin);
   process.stdin.on("keypress", handle);
 
