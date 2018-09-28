@@ -7,6 +7,8 @@ exports.PreAddPlugin = (vermon, factory) => {
 	//Extending Entities Factory
 	factory.extend({BB8Notifier, BB8Filter});
 };
-exports.PostAddPlugin = () => {};
+exports.PostAddPlugin = (data) => {
+	console.log(`Ran! Yoohooo! First arg is ${JSON.stringify(data)}`);
+};
 exports.ShouldStart = () => {};
 exports.Start = () => {};
