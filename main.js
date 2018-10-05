@@ -1,6 +1,6 @@
-var t = require('t-motion-detector');
+var vermon = require('vermon');
 
-class Config extends t.Config {
+class Config extends vermon.Config {
 
 	constructor()
 	{

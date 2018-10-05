@@ -10,16 +10,17 @@
  *****************************************************/
 
 var chai = require('chai');
-var chaiAsPromised = require("chai-as-promised");
+//var chaiAsPromised = require("chai-as-promised");
 var should = chai.should();
 var fs = require('fs');
-var t = require('t-motion-detector');
+var vermon = require('vermon');
 var ent = require('../Entities');
 var main = require('../main.js');
 var events = require('events');
+var sphero = require('sphero');
 
 //Chai will use promises for async events
-chai.use(chaiAsPromised);
+//chai.use(chaiAsPromised);
 
 before(function(done) {
   done();
@@ -28,6 +29,20 @@ before(function(done) {
 after(function(done) {
   // here you can clear fixtures, etc.
   done();
+});
+
+describe("Sphero library sanity check, ", function(done) {
+  xit('should ', function() {
+    bb8 = sphero("F3:F2:6D:55:71:09"); // change BLE address accordingly
+    bb8.connect(function() {
+      // roll BB-8 in a random direction, changing direction every second
+      setTimeout(function() {
+        var direction = Math.floor(Math.random() * 360);
+        bb8.roll(150, direction);
+        done();
+      }, 1000);
+    });
+  });
 });
 
 describe("When a new BB8 Notifier is created, ", function() {
@@ -45,10 +60,10 @@ describe("When a new BB8 Notifier is created, ", function() {
   it('"BB8Notifier" must extend BaseNotifier', function() {
     //Assumes there is some local file with the key
     var n = new ent.BB8Notifier("My BB8 Notifier", "Some-MAC-Address");
-    (n instanceof t.Entities.BaseNotifier).should.equal(true);
+    (n instanceof vermon.Entities.BaseNotifier).should.equal(true);
   });
 
-  it('should detect the BB8 config address property', function() {
+  it('should detect the BB8 config address property', function() { //To deprecate
     //Assumes there is some local file with the key
     var address = new main.Config().bB8Address();
     var n = new ent.BB8Notifier("My BB8 Notifier", address);
