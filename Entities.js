@@ -12,8 +12,8 @@ class BB8Notifier extends BaseNotifier{
     if(macAddress){
       this.macAddress = macAddress;
       this.bb8 = sphero(macAddress);
-      this.connect();
       _bb8NotiInstance = this;
+      this.connect();
     } else {
       throw new Error("'address' is a required argument, which should contain the BB8 mac address.");
     }
@@ -21,9 +21,7 @@ class BB8Notifier extends BaseNotifier{
 
   connect(){
     this.bb8.connect(function() {
-      setInterval(this.handler(), 1000);
-      //To remove
-      this.notify();
+      setInterval(_bb8NotiInstance.handler, 1000);
     });
   }
 
@@ -31,20 +29,21 @@ class BB8Notifier extends BaseNotifier{
     //var direction = Math.floor(Math.random() * 360);
     //_bb8NotiInstance.bb8.roll(150, direction);
     if(_bb8NotiInstance.command){
-      console.log("New command exists!");
+      console.log(`New command exists! ${_bb8NotiInstance.command}(${_bb8NotiInstance.args})`);
       try{
-        _bb8NotiInstance.bb8["command"](..._bb8NotiInstance.args);
+        _bb8NotiInstance.bb8[_bb8NotiInstance.command](..._bb8NotiInstance.args);
       } catch(e){
         console.error(`Error performing command: ${e}`);
       }
       _bb8NotiInstance.command = undefined; //Reset command
+      _bb8NotiInstance.args = {};
     }
   }
 
-  notify(){
-    super.notify();
-    this.command = "roll";
-    this.args = {  }
+  notify(text, oldState, newState, environment, detector){
+    super.notify(text, oldState, newState, environment, detector);
+    this.command = newState.command;
+    this.args = newState.args;
   }
 }
 

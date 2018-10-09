@@ -23,3 +23,6 @@ class Config extends vermon.Config {
 }
 
 exports.Config = Config;
+exports.id = module.id;
+exports.PreAddPlugin = () => {};
+exports.PostAddPlugin = () => {};
