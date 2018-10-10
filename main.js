@@ -1,4 +1,4 @@
-let BB8Notifier = require('./Entities').ent.BB8Notifier;
+let BB8Notifier = require('./Entities').BB8Notifier;
 
 exports.id = module.id;
 exports.PreAddPlugin = (vermon, factory) => {
