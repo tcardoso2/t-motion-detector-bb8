@@ -5,6 +5,6 @@ exports.PreAddPlugin = (vermon, factory) => {
 	//Extending Entities Factory
 	factory.extend({BB8Notifier});
 };
-exports.PostAddPlugin = () => {
-};
-
+exports.PostAddPlugin = () => {};
+exports.ShouldStart = () => {};
+exports.Start = () => {};

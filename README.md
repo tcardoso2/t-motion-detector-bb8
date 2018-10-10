@@ -41,6 +41,7 @@ vermon.watch().then((environment, detectors, notifiers)=>{
 
 * Version History  
 
+ ** v 0.2.4: Fixes, added missing required functions for Plugin Start and ShouldStart;  
  ** v 0.2.3: Fixes, added example;  
  ** v 0.2.2: Simplified extending Entities, updated dependency to vermon@0.6.6;  
  ** v 0.2.1: Updated dependency to vermon@0.6.5;  
