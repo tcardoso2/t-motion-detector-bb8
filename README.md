@@ -41,11 +41,12 @@ vermon.watch().then((environment, detectors, notifiers)=>{
 
 * Version History  
 
- ** v 0.2.4: Fixes, added missing required functions for Plugin Start and ShouldStart;  
- ** v 0.2.3: Fixes, added example;  
- ** v 0.2.2: Simplified extending Entities, updated dependency to vermon@0.6.6;  
- ** v 0.2.1: Updated dependency to vermon@0.6.5;  
- ** v 0.2.0: Updated to vermon library (WIP), using standard shpero dependency instead of cylon;  
- ** v 0.1.2: Added cylon packages as dependencies, added first Unit tests;  
- ** v 0.1.1: Added package.json and included t-motion-detector as dependency;  
- ** v 0.1.0: Initial version;  
+ ** v 0.2.5 **: (WIP), Adding BB8Filter to transform input state changes into notifier commands that the BB8 can understand;  
+ ** v 0.2.4 **: Fixes, added missing required functions for Plugin Start and ShouldStart;  
+ ** v 0.2.3 **: Fixes, added example;  
+ ** v 0.2.2 **: Simplified extending Entities, updated dependency to vermon@0.6.6;  
+ ** v 0.2.1 **: Updated dependency to vermon@0.6.5;  
+ ** v 0.2.0 **: Updated to vermon library (WIP), using standard shpero dependency instead of cylon;  
+ ** v 0.1.2 **: Added cylon packages as dependencies, added first Unit tests;  
+ ** v 0.1.1 **: Added package.json and included t-motion-detector as dependency;  
+ ** v 0.1.0 **: Initial version;  
