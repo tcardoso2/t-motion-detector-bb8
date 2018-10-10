@@ -62,23 +62,4 @@ describe("When a new BB8 Notifier is created, ", function() {
     var n = new ent.BB8Notifier("My BB8 Notifier", "Some-MAC-Address");
     (n instanceof vermon.Entities.BaseNotifier).should.equal(true);
   });
-
-  it('should detect the BB8 config address property', function() { //To deprecate
-    //Assumes there is some local file with the key
-    var address = new main.Config().bB8Address();
-    var n = new ent.BB8Notifier("My BB8 Notifier", address);
-    n.macAddress.should.equal(address);
-  });
-
-  it('should check if a local file exists', function () {
-    var local_config = new main.Config();
-    local_config.file.default.bb8.should.not.equal(undefined);
-  });
-
-  it('should detect the BB8 config properties from the local config file (default profile)', function() {
-    //Assumes there is some local file with the key
-    var address = new main.Config().bB8Address();
-    var local_config = new main.Config();
-    local_config.file.default.bb8.macAddress.should.not.equal(undefined);
-  });
 });

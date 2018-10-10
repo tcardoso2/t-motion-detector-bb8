@@ -14,6 +14,7 @@ var chai = require('chai');
 var should = chai.should();
 var fs = require('fs');
 var vermon = require('vermon');
+var logger = vermon.logger;
 var ent = require('../Entities');
 var main = require('../main.js');
 var events = require('events');
@@ -36,11 +37,14 @@ describe("When a new BB8Filter is created, ", function() {
     let f = new ent.BB8Filter();
     (f instanceof vermon.Filters.BaseFilter).should.equal(true);
   });
-  xit('should be able to add into the config file', function(done) {
+  it('should be able to add into the config file', function(done) {
+    vermon.Utils.setLevel('debug');
     vermon.use(main);
-    vermon.configure();
-    vermon.watch().then((e,d,n,f) => {
-      (f[0] instanceof ent.BB8Filter).should.equal(true);
+    vermon.configure('test/config_local1.js');
+    vermon.watch().then((data) => {
+      (data.filters == undefined).should.equal(false);
+      data.filters.length.should.equal(1);
+      (data.filters[0] instanceof ent.BB8Filter).should.equal(true);
       done();
     });
   });

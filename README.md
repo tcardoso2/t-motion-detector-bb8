@@ -39,8 +39,10 @@ vermon.watch().then((environment, detectors, notifiers)=>{
 });
 ````
 
-* Version History  
+* Version History
 
+ ** v 0.2.7 **: Updated to dependency to vermon@0.6.9, work in progress on BB8Filter testing;  
+ ** v 0.2.6 **: Updated to dependency to vermon@0.6.7;  
  ** v 0.2.5 **: (WIP), Adding BB8Filter to transform input state changes into notifier commands that the BB8 can understand;  
  ** v 0.2.4 **: Fixes, added missing required functions for Plugin Start and ShouldStart;  
  ** v 0.2.3 **: Fixes, added example;  
